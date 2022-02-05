@@ -1,4 +1,4 @@
-package com.example.jokesofchucknorrisapp.jokes.view
+package com.example.jokesofchucknorrisapp.jokes.view.adapter
 
 import android.view.LayoutInflater
 import android.view.ViewGroup

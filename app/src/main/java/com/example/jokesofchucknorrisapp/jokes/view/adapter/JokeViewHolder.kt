@@ -1,4 +1,4 @@
-package com.example.jokesofchucknorrisapp.jokes.view
+package com.example.jokesofchucknorrisapp.jokes.view.adapter
 
 import androidx.recyclerview.widget.RecyclerView
 import com.example.jokesofchucknorrisapp.databinding.ItemRecyclerViewJokeBinding
