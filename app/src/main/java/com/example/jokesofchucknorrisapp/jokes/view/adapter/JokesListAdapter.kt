@@ -2,10 +2,11 @@ package com.example.jokesofchucknorrisapp.jokes.view.adapter
 
 import android.view.LayoutInflater
 import android.view.ViewGroup
-import androidx.recyclerview.widget.RecyclerView
+import androidx.recyclerview.widget.ListAdapter
 import com.example.jokesofchucknorrisapp.databinding.ItemRecyclerViewJokeBinding
+import com.example.jokesofchucknorrisapp.jokes.data.Joke
 
-class JokesListAdapter : RecyclerView.Adapter<JokeViewHolder>() {
+class JokesListAdapter : ListAdapter<Joke, JokeViewHolder>(JokeDiffUtilCallback) {
     override fun onCreateViewHolder(parent: ViewGroup, viewType: Int): JokeViewHolder {
         return JokeViewHolder(
             ItemRecyclerViewJokeBinding.inflate(
@@ -17,10 +18,7 @@ class JokesListAdapter : RecyclerView.Adapter<JokeViewHolder>() {
     }
 
     override fun onBindViewHolder(holder: JokeViewHolder, position: Int) {
-        holder.bind()
+        holder.bind(currentList[position].jokeName)
     }
 
-    override fun getItemCount(): Int {
-        TODO("Not yet implemented")
-    }
 }
