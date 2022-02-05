@@ -9,7 +9,7 @@ import retrofit2.create
 
 object ApiHolder {
     val retrofitService by lazy {
-        getRetrofit().create<ApiHolder>()
+        getRetrofit().create<RemoteService>()
     }
 
     private fun getRetrofit(): Retrofit {
