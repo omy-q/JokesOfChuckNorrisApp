@@ -8,6 +8,8 @@ class JokesModelImplementation(
     private val remoteService: RemoteService
 ): JokesModel {
     override fun getJokes(count: Int): Single<List<Joke>> {
-        return remoteService.loadJokes(count)
+        return remoteService.loadJokes(count).flatMap { result ->
+            Single.fromCallable { result.jokes }
+        }
     }
 }
