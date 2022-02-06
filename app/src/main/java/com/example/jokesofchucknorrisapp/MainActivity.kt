@@ -14,6 +14,9 @@ class MainActivity : AppCompatActivity() {
         binding = ActivityMainBinding.inflate(layoutInflater)
         setContentView(binding.root)
         initNavigationListener()
+        if (savedInstanceState == null) {
+            transferToFragment(R.id.screen_container, JokesFragment())
+        }
     }
 
     private fun initNavigationListener() {
