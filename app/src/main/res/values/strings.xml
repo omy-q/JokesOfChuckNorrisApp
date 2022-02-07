@@ -1,3 +1,7 @@
 <resources>
     <string name="app_name">JokesOfChuckNorrisApp</string>
+    <string name="menu_jokes_screen_title">Jokes</string>
+    <string name="menu_webview_title">Web</string>
+    <string name="btn_reload_txt">reload</string>
+    <string name="edit_text_hint">count of jokes</string>
 </resources>
