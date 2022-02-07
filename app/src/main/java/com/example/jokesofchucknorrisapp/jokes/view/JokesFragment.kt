@@ -31,8 +31,16 @@ class JokesFragment : BaseFragment<FragmentJokesBinding>(FragmentJokesBinding::i
 
     private fun initBtnListener() {
         binding.btnReload.setOnClickListener {
-            val count = (binding.editTextJokesCount.text.toString()).toInt()
-            presenter.getData(count)
+            try{
+                val count = (binding.editTextJokesCount.text.toString()).toInt()
+                if (count <= 0){
+                    throw Exception()
+                }
+                presenter.getData(count)
+            }
+            catch (e: Exception){
+                binding.editTextJokesCount.error = "count must be int and > 0"
+            }
         }
     }
 
@@ -45,7 +53,7 @@ class JokesFragment : BaseFragment<FragmentJokesBinding>(FragmentJokesBinding::i
     }
 
     override fun showJokes(jokes: List<Joke>) {
-       adapter.submitList(jokes)
+        adapter.submitList(jokes)
     }
 
     override fun showLoading() {
