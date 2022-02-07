@@ -5,16 +5,27 @@ import android.view.View
 import com.example.jokesofchucknorrisapp.base.view.BaseFragment
 import com.example.jokesofchucknorrisapp.databinding.FragmentWebviewBinding
 
-class WebViewFragment: BaseFragment<FragmentWebviewBinding>(FragmentWebviewBinding::inflate) {
+class WebViewFragment : BaseFragment<FragmentWebviewBinding>(FragmentWebviewBinding::inflate) {
 
     override fun onViewCreated(view: View, savedInstanceState: Bundle?) {
         super.onViewCreated(view, savedInstanceState)
-        initView()
+        initView(savedInstanceState)
     }
 
-    private fun initView() {
-        binding.webView.webViewClient = MyWebViewClient()
-        binding.webView.loadUrl("https://www.icndb.com/api/")
+    private fun initView(savedInstanceState: Bundle?) {
+        with(binding.webView) {
+            webViewClient = MyWebViewClient()
+            if (savedInstanceState != null) {
+                restoreState(savedInstanceState)
+            } else {
+                loadUrl("http://www.icndb.com/api/")
+            }
+        }
+    }
+
+    override fun onSaveInstanceState(outState: Bundle) {
+        binding.webView.saveState(outState)
+        super.onSaveInstanceState(outState)
     }
 
 }
